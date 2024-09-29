@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "testmod:cyan_log",
+    "testmod:cyan_wood",
+    "testmod:cyan_planks",
+    "testmod:stripped_cyan_log",
+    "testmod:stripped_cyan_wood"
+  ]
+}

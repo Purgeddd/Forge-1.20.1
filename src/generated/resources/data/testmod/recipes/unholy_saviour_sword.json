@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "B": {
+      "item": "testmod:unholy_saviour_sword_blade"
+    },
+    "C": {
+      "item": "testmod:unholy_saviour_sword_crossguard"
+    },
+    "H": {
+      "item": "testmod:unholy_saviour_sword_handle"
+    }
+  },
+  "pattern": [
+    "  B",
+    " C ",
+    "H  "
+  ],
+  "result": {
+    "item": "testmod:unholy_saviour_sword"
+  },
+  "show_notification": true
+}

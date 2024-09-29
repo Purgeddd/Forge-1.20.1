@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "C": {
+      "item": "testmod:corrupted_core"
+    }
+  },
+  "pattern": [
+    "C C",
+    "C C"
+  ],
+  "result": {
+    "item": "testmod:corrupted_boots"
+  },
+  "show_notification": true
+}

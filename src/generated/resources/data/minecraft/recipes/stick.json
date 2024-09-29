@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "P": {
+      "tag": "testmod:planks"
+    }
+  },
+  "pattern": [
+    "P",
+    "P"
+  ],
+  "result": {
+    "item": "minecraft:stick"
+  },
+  "show_notification": true
+}

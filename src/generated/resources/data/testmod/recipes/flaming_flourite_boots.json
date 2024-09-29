@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "F": {
+      "item": "testmod:flaming_flourite"
+    }
+  },
+  "pattern": [
+    "F F",
+    "F F"
+  ],
+  "result": {
+    "item": "testmod:flaming_flourite_boots"
+  },
+  "show_notification": true
+}

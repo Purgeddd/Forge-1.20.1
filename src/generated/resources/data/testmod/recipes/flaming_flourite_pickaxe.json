@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "F": {
+      "item": "testmod:flaming_flourite"
+    },
+    "O": {
+      "item": "testmod:obsidian_rod"
+    }
+  },
+  "pattern": [
+    "FFF",
+    " O ",
+    " O "
+  ],
+  "result": {
+    "item": "testmod:flaming_flourite_pickaxe"
+  },
+  "show_notification": true
+}

@@ -1,0 +1,64 @@
+{
+  "item.testmod.flaming_flourite": "Flaming Flourite",
+  "item.testmod.flaming_flourite_sword": "Flaming Flourite Sword",
+  "item.testmod.flaming_flourite_pickaxe": "Flaming Flourite Pickaxe",
+  "item.testmod.flaming_flourite_axe": "Flaming Flourite Axe",
+  "item.testmod.flaming_flourite_shovel": "Flaming Flourite Shovel",
+  "item.testmod.flaming_flourite_hoe": "Flaming Flourite Hoe",
+  "item.testmod.flaming_flourite_helmet": "Flaming Flourite Helmet",
+  "item.testmod.flaming_flourite_chestplate": "Flaming Flourite Chestplate",
+  "item.testmod.flaming_flourite_leggings": "Flaming Flourite Leggings",
+  "item.testmod.flaming_flourite_boots": "Flaming Flourite Boots",
+
+  "item.testmod.corrupted_helmet": "Corrupted Helmet",
+  "item.testmod.corrupted_chestplate": "Corrupted Chestplate",
+  "item.testmod.corrupted_leggings": "Corrupted Leggings",
+  "item.testmod.corrupted_boots": "Corrupted Boots",
+  "item.testmod.corrupted_core": "Corrupted Core",
+  "item.testmod.corrupted_battle_axe": "Corrupted Battle Axe",
+
+
+  "item.testmod.parasaur_spawn_egg": "Parasaur Spawn Egg",
+  "item.testmod.mozaic_butterfly_spawn_egg": "Mozaic Butterfly Spawn Egg",
+  "item.testmod.golden_chicken_spawn_egg": "Golden Chicken Spawn Egg",
+  "item.testmod.obsidian_golem_spawn_egg": "Obsidian Golem Spawn Egg",
+  "item.testmod.sea_serpent_spawn_egg": "Sea Serpent Spawn Egg",
+
+  "item.testmod.unholy_saviour_sword": "Unholy Saviour Sword",
+  "item.testmod.unholy_saviour_sword_blade": "Unholy Saviour Sword Blade",
+  "item.testmod.unholy_saviour_sword_crossguard": "Unholy Saviour Sword Crossguard",
+  "item.testmod.unholy_saviour_sword_handle": "Unholy Saviour Sword Handle",
+  "item.testmod.obsidian_rod": "Obsidian Rod",
+  "item.testmod.forsaken_feather": "Forsaken Feather",
+  "item.testmod.rainbow_apple": "Rainbow Apple",
+  "item.testmod.golden_chicken_breast": "Golden Chicken Breast",
+  "item.testmod.sea_serpent_tooth": "Sea Serpent Tooth",
+
+  "entity.testmod.obsidian_golem": "Obsidian Golem",
+  "entity.testmod.sea_serpent": "Sea Serpent",
+  "entity.testmod.parasaur": "Parasaur",
+  "entity.testmod.golden_chicken": "Golden Chicken",
+  "entity.testmod.mozaic_butterfly": "Mozaic Butterfly",
+
+  "block.testmod.flaming_flourite_block": "Flaming Flourite Block",
+  "block.testmod.flaming_flourite_ore": "Flaming Flourite Ore",
+
+  "biome.testmod.cyan_forest": "Cyan Forest",
+  "biome.testmod.the_abyss": "The Abyss",
+
+  "testmod.container.flaming_flourite_furnace": "Flaming Flourite Furnace",
+
+  "block.testmod.pink_leaves": "Pink Leaves",
+  "block.testmod.cyan_log": "Cyan Log",
+  "block.testmod.cyan_wood": "Cyan Wood",
+  "block.testmod.cyan_planks": "Cyan Plank",
+  "block.testmod.stripped_cyan_log": "Stripped Cyan Log",
+  "block.testmod.stripped_cyan_wood": "Stripped Cyan Wood",
+  "block.testmod.cyan_sapling": "Cyan Sapling",
+
+
+  "block.testmod.flaming_flourite_furnace": "Flaming Flourite Furnace",
+
+
+  "creativemodetab.test_tab": "Test Tab"
+}

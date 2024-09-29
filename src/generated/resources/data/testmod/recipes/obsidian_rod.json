@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "minecraft:obsidian"
+    }
+  },
+  "pattern": [
+    "#  ",
+    "#  "
+  ],
+  "result": {
+    "item": "testmod:obsidian_rod"
+  },
+  "show_notification": true
+}

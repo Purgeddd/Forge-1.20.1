@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_flaming_flourite_block": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "testmod:flaming_flourite_block"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "testmod:flaming_flourite"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_flaming_flourite_block",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "testmod:flaming_flourite"
+    ]
+  },
+  "sends_telemetry_event": false
+}

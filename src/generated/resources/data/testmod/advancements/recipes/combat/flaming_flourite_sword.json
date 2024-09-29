@@ -1,0 +1,48 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_flaming_flourite": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "testmod:flaming_flourite"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_obsidian_rod": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "testmod:obsidian_rod"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "testmod:flaming_flourite_sword"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_flaming_flourite",
+      "has_obsidian_rod",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "testmod:flaming_flourite_sword"
+    ]
+  },
+  "sends_telemetry_event": false
+}

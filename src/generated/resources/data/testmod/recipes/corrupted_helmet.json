@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "C": {
+      "item": "testmod:corrupted_core"
+    }
+  },
+  "pattern": [
+    "CCC",
+    "C C",
+    "   "
+  ],
+  "result": {
+    "item": "testmod:corrupted_helmet"
+  },
+  "show_notification": true
+}

@@ -1,0 +1,16 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"unholy_saviour_sword_idle": {
+			"animation_length": 0.5833,
+			"bones": {
+				"unholy_saviour_sword": {
+					"rotation": {
+						"vector": [0, 0, 0]
+					}
+				}
+			}
+		}
+	},
+	"geckolib_format_version": 2
+}
