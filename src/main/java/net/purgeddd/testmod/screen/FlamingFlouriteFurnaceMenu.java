@@ -17,12 +17,12 @@ public class FlamingFlouriteFurnaceMenu extends AbstractFurnaceMenu {
         this(pContainerId, pPlayerInventory);
     }
 
-    public FlamingFlouriteFurnaceMenu(int pContainerId, Inventory pPlayerInventory) {
-        super(ModMenuTypes.FLAMING_FLOURITE_FURNACE_MENU.get(), FlamingFlouriteFurnaceRecipe.Type.INSTANCE, RecipeBookType.FURNACE, pContainerId, pPlayerInventory);
-    }
-
     public FlamingFlouriteFurnaceMenu(int p_39535_, Inventory p_39536_, Container container, ContainerData containerData) {
         super(ModMenuTypes.FLAMING_FLOURITE_FURNACE_MENU.get(), FlamingFlouriteFurnaceRecipe.Type.INSTANCE, RecipeBookType.FURNACE, p_39535_, p_39536_, container, containerData);
+    }
+
+    public FlamingFlouriteFurnaceMenu(int pContainerId, Inventory pPlayerInventory) {
+        super(ModMenuTypes.FLAMING_FLOURITE_FURNACE_MENU.get(), FlamingFlouriteFurnaceRecipe.Type.INSTANCE, RecipeBookType.FURNACE, pContainerId, pPlayerInventory);
     }
 
     @Override

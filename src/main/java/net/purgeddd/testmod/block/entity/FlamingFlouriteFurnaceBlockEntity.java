@@ -17,7 +17,8 @@ import java.util.Map;
 
 public class FlamingFlouriteFurnaceBlockEntity extends AbstractFurnaceBlockEntity {
 
-    private Map<Item, Integer> BURN_DURATION_MAP = Map.of(Items.BLAZE_POWDER, 800);
+    private Map<Item, Integer> BURN_DURATION_MAP =
+            Map.of(Items.BLAZE_POWDER, 800);
 
     public FlamingFlouriteFurnaceBlockEntity(BlockPos p_155545_, BlockState p_155546_) {
         super(ModBlockEntities.FLAMING_FLOURITE_FURNACE_BLOCK_ENTITY.get(), p_155545_, p_155546_, FlamingFlouriteFurnaceRecipe.Type.INSTANCE);
@@ -25,7 +26,7 @@ public class FlamingFlouriteFurnaceBlockEntity extends AbstractFurnaceBlockEntit
 
     @Override
     protected Component getDefaultName() {
-        return Component.translatable("testmod.container.flaming_flourite_furnace");
+        return Component.translatable("block.testmod.flaming_flourite_furnace");
     }
 
     @Override
