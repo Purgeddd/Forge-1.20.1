@@ -1,6 +1,9 @@
 package net.purgeddd.testmod;
 
+import com.mojang.logging.LogUtils;
 import net.minecraft.client.gui.screens.MenuScreens;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -19,14 +22,16 @@ import net.purgeddd.testmod.block.entity.ModBlockEntities;
 import net.purgeddd.testmod.block.ModBlocks;
 import net.purgeddd.testmod.entity.ModEntities;
 import net.purgeddd.testmod.entity.client.*;
+import net.purgeddd.testmod.fluid.ModFluidTypes;
+import net.purgeddd.testmod.fluid.ModFluids;
 import net.purgeddd.testmod.item.ModCreativeModeTabs;
 import net.purgeddd.testmod.item.ModItems;
 import net.purgeddd.testmod.recipe.ModRecipes;
 import net.purgeddd.testmod.screen.ModMenuTypes;
-import net.purgeddd.testmod.screen.FlamingFlouriteFurnaceScreen;
 import net.purgeddd.testmod.worldgen.biome.CyanForestBiome;
 import net.purgeddd.testmod.worldgen.biome.TheAbyssBiome;
 import net.purgeddd.testmod.worldgen.biome.surface.ModSurfaceRules;
+import org.slf4j.Logger;
 import terrablender.api.Regions;
 import terrablender.api.SurfaceRuleManager;
 
@@ -36,6 +41,7 @@ public class TestMod
 {
     // Define mod id in a common place for everything to reference
     public static final String MOD_ID = "testmod";
+    public static final Logger LOGGER = LogUtils.getLogger();
 
 
 
@@ -52,6 +58,9 @@ public class TestMod
         ModBlockEntities.register(modEventBus);
         ModMenuTypes.register(modEventBus);
         ModRecipes.register(modEventBus);
+        ModFluidTypes.register(modEventBus);
+        ModFluids.register(modEventBus);
+
 
 
         // Register the commonSetup method for modloading
@@ -103,7 +112,6 @@ public class TestMod
             event.accept(ModItems.FLAMING_FLOURITE_HOE);
             event.accept(ModBlocks.FLAMING_FLOURITE_BLOCK);
             event.accept(ModBlocks.FLAMING_FLOURITE_ORE);
-            event.accept(ModBlocks.FLAMING_FLOURITE_FURNACE_BLOCK);
             event.accept(ModBlocks.CYAN_LOG);
             event.accept(ModBlocks.CYAN_WOOD);
             event.accept(ModBlocks.CYAN_PLANKS);
@@ -134,6 +142,7 @@ public class TestMod
             event.accept(ModItems.CORRUPTED_BOOTS);
             event.accept(ModItems.CORRUPTED_CORE);
             event.accept(ModItems.CORRUPTED_BATTLE_AXE);
+            event.accept(ModItems.GASOLINE_BUCKET);
 
 
 
@@ -155,6 +164,15 @@ public class TestMod
             event.accept(ModBlocks.FLAMING_FLOURITE_BLOCK);
             event.accept(ModBlocks.FLAMING_FLOURITE_ORE);
 
+
+        }
+
+        if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
+            event.accept(ModItems.FLAMING_FLOURITE_PICKAXE);
+            event.accept(ModItems.FLAMING_FLOURITE_AXE);
+            event.accept(ModItems.FLAMING_FLOURITE_SHOVEL);
+            event.accept(ModItems.FLAMING_FLOURITE_HOE);
+            event.accept(ModItems.GASOLINE_BUCKET);
 
         }
 
@@ -221,7 +239,11 @@ public class TestMod
             EntityRenderers.register(ModEntities.OBSIDIAN_GOLEM.get(), ObsidianGolemRenderer::new);
             EntityRenderers.register(ModEntities.SEA_SERPENT.get(), SeaSerpentRenderer::new);
 
-            MenuScreens.register(ModMenuTypes.FLAMING_FLOURITE_FURNACE_MENU.get(), FlamingFlouriteFurnaceScreen::new);
+            //MenuScreens.register(ModMenuTypes..get(), ::new);
+
+            ItemBlockRenderTypes.setRenderLayer(ModFluids.SOURCE_GASOLINE.get(), RenderType.translucent());
+            ItemBlockRenderTypes.setRenderLayer(ModFluids.FLOWING_GASOLINE.get(), RenderType.translucent());
+
 
         }
     }

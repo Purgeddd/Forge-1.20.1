@@ -1,10 +1,9 @@
-// 1.20.1	2024-09-29T20:48:17.1527798	Loot Tables
+// 1.20.1	2024-10-01T17:53:33.9006204	Loot Tables
 8542a8a72da72a8b95fce2d8d803700327015aa4 data/testmod/loot_tables/blocks/cyan_log.json
 5363ba6b7c10b017c5e03a9fd3bc608f3d6d3566 data/testmod/loot_tables/blocks/cyan_planks.json
 287b1f95177b6dd47ca16b622b7f1069229254a5 data/testmod/loot_tables/blocks/cyan_sapling.json
 09552c957cf916fbd3a26f49a18747d4404cabcc data/testmod/loot_tables/blocks/cyan_wood.json
 a4faf65a833034dcda5adfec11bdc5248b994165 data/testmod/loot_tables/blocks/flaming_flourite_block.json
-2c9e5ec60b37dab7fa6c2a4084d3842073ffef6a data/testmod/loot_tables/blocks/flaming_flourite_furnace.json
 16406168256fbdd2ba7c3c21209faa7e89027cde data/testmod/loot_tables/blocks/flaming_flourite_ore.json
 9ed224c0e916c649fd54a46959fbf8bf4c4f9f5b data/testmod/loot_tables/blocks/pink_leaves.json
 b431281fdf086b713cbdc29263922f6a2e27f2c7 data/testmod/loot_tables/blocks/stripped_cyan_log.json

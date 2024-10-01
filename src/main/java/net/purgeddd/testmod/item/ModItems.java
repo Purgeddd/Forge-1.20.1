@@ -8,6 +8,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.purgeddd.testmod.TestMod;
 import net.purgeddd.testmod.entity.ModEntities;
+import net.purgeddd.testmod.fluid.ModFluids;
 import net.purgeddd.testmod.item.custom.CorruptedArmorItem;
 import net.purgeddd.testmod.item.custom.ModArmorItem;
 import net.purgeddd.testmod.item.custom.UnholySaviourSwordItem;
@@ -110,6 +111,9 @@ public class ModItems {
 
     public static final RegistryObject<Item> CORRUPTED_BOOTS = ITEMS.register("corrupted_boots",
             () -> new CorruptedArmorItem(ModArmorMaterials.CORRUPTED, ArmorItem.Type.BOOTS, new Item.Properties()));
+
+    public static final RegistryObject<Item> GASOLINE_BUCKET = ITEMS.register("gasoline_bucket",
+            () -> new BucketItem(ModFluids.SOURCE_GASOLINE, new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
 
 
 

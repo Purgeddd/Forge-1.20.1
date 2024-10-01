@@ -106,6 +106,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.CORRUPTED_BOOTS);
         simpleItem(ModItems.CORRUPTED_CORE);
         simpleItem(ModItems.SEA_SERPENT_TOOTH);
+        simpleItem(ModItems.GASOLINE_BUCKET);
 
         withExistingParent(ModItems.PARASAUR_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
         withExistingParent(ModItems.MOZAIC_BUTTERFLY_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));

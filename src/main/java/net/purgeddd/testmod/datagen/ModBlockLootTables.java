@@ -28,7 +28,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.STRIPPED_CYAN_WOOD.get());
         this.dropSelf(ModBlocks.STRIPPED_CYAN_LOG.get());
         this.dropSelf(ModBlocks.CYAN_SAPLING.get());
-        this.dropSelf(ModBlocks.FLAMING_FLOURITE_FURNACE_BLOCK.get());
+
 
         this.add(ModBlocks.PINK_LEAVES.get(), (block) ->
                 createLeavesDrops(block, ModBlocks.PINK_LEAVES.get(), NORMAL_LEAVES_SAPLING_CHANCES));

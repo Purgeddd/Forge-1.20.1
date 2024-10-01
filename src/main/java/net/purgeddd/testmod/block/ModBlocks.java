@@ -17,8 +17,8 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.purgeddd.testmod.TestMod;
-import net.purgeddd.testmod.block.custom.FlamingFlouriteFurnaceBlock;
 import net.purgeddd.testmod.block.custom.ModFlammableRotatedPillarBlock;
+import net.purgeddd.testmod.fluid.ModFluids;
 import net.purgeddd.testmod.item.ModItems;
 import net.purgeddd.testmod.worldgen.tree.CyanTreeGrower;
 
@@ -37,9 +37,6 @@ public class ModBlocks {
             () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(5f).requiresCorrectToolForDrops(),
                     UniformInt.of(2,6)));
 
-    public static final RegistryObject<Block> FLAMING_FLOURITE_FURNACE_BLOCK = registerBlock("flaming_flourite_furnace",
-            () -> new FlamingFlouriteFurnaceBlock(BlockBehaviour.Properties.copy(Blocks.STONE)));
-
     public static final RegistryObject<Block> CYAN_LOG = registerBlock("cyan_log",
             () -> new ModFlammableRotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LOG).strength(2f)));
 
@@ -51,6 +48,7 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> STRIPPED_CYAN_WOOD = registerBlock("stripped_cyan_wood",
             () -> new ModFlammableRotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.STRIPPED_OAK_WOOD).strength(2f)));
+
 
     public static final RegistryObject<Block> CYAN_PLANKS = registerBlock("cyan_planks",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).strength(2f)){
@@ -105,8 +103,8 @@ public class ModBlocks {
     public static final RegistryObject<Block> CYAN_SAPLING = registerBlock("cyan_sapling",
             () -> new SaplingBlock(new CyanTreeGrower(), BlockBehaviour.Properties.copy(Blocks.OAK_SAPLING)));
 
-
-
+    public static final RegistryObject<LiquidBlock> GASOLINE_BLOCK = BLOCKS.register("gasoline_block",
+            () -> new LiquidBlock(ModFluids.SOURCE_GASOLINE, BlockBehaviour.Properties.copy(Blocks.WATER).noLootTable()));
 
 
 
