@@ -1,0 +1,73 @@
+{
+	"credit": "Made with Blockbench",
+	"texture_size": [64, 64],
+	"textures": {
+		"1": "testmod:block/flaming_flourite_forge",
+		"particle": "testmod:block/flaming_flourite_forge"
+	},
+	"elements": [
+		{
+			"from": [0, 0, 2.1],
+			"to": [16, 16, 16],
+			"rotation": {"angle": 0, "axis": "y", "origin": [7, 0, 8]},
+			"faces": {
+				"north": {"uv": [0, 0, 4, 4], "texture": "#1"},
+				"east": {"uv": [4, 0, 7.5, 4], "texture": "#1"},
+				"south": {"uv": [0, 4, 4, 8], "texture": "#1"},
+				"west": {"uv": [4, 4, 7.5, 8], "texture": "#1"},
+				"up": {"uv": [11.5, 3.5, 7.5, 0], "texture": "#1"},
+				"down": {"uv": [11.5, 3.5, 7.5, 7], "texture": "#1"}
+			}
+		},
+		{
+			"name": "FrontGlass",
+			"from": [2, 2, 1],
+			"to": [14, 14, 3],
+			"rotation": {"angle": 0, "axis": "y", "origin": [7, 0, -5]},
+			"faces": {
+				"north": {"uv": [7.5, 7, 10.5, 10], "texture": "#1"},
+				"east": {"uv": [3, 8, 3.5, 11], "texture": "#1"},
+				"south": {"uv": [0, 8, 3, 11], "texture": "#1"},
+				"west": {"uv": [3.5, 8, 4, 11], "texture": "#1"},
+				"up": {"uv": [7, 8.5, 4, 8], "texture": "#1"},
+				"down": {"uv": [7, 8.5, 4, 9], "texture": "#1"}
+			}
+		}
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [47, 19, 0],
+			"translation": [0, 0, 0.5],
+			"scale": [0.275, 0.275, 0.275]
+		},
+		"thirdperson_lefthand": {
+			"rotation": [47, 19, 0],
+			"translation": [0, 0, 0.5],
+			"scale": [0.275, 0.275, 0.275]
+		},
+		"firstperson_righthand": {
+			"translation": [0, 1.25, 0],
+			"scale": [0.75, 0.75, 0.75]
+		},
+		"firstperson_lefthand": {
+			"translation": [0, 1.25, 0],
+			"scale": [0.75, 0.75, 0.75]
+		},
+		"ground": {
+			"scale": [0.55, 0.55, 0.55]
+		},
+		"gui": {
+			"rotation": [25, -145, 0],
+			"translation": [0, -0.25, 0],
+			"scale": [0.7, 0.7, 0.7]
+		},
+		"head": {
+			"translation": [0, 7, 0]
+		},
+		"fixed": {
+			"rotation": [-17, 52, 0],
+			"translation": [0, 2.25, -3.75],
+			"scale": [0.55, 0.55, 0.55]
+		}
+	}
+}
