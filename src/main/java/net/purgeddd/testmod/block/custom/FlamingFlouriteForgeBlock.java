@@ -98,7 +98,7 @@ public class FlamingFlouriteForgeBlock extends BaseEntityBlock {
 
     @Override
     public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState blockState, BlockEntityType<T> blockEntityType) {
-        if(!level.isClientSide) {
+        if(level.isClientSide) {
             return null;
         }
         return createTickerHelper(blockEntityType, ModBlockEntities.FLAMING_FLOURITE_FORGE_BE.get(), (level1, blockPos, blockState1, flamingFlouriteForgeBlockEntity)
