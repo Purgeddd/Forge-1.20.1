@@ -27,6 +27,7 @@ import net.purgeddd.testmod.fluid.ModFluids;
 import net.purgeddd.testmod.item.ModCreativeModeTabs;
 import net.purgeddd.testmod.item.ModItems;
 import net.purgeddd.testmod.recipe.ModRecipes;
+import net.purgeddd.testmod.screen.FlamingFlouriteForgeScreen;
 import net.purgeddd.testmod.screen.ModMenuTypes;
 import net.purgeddd.testmod.worldgen.biome.CyanForestBiome;
 import net.purgeddd.testmod.worldgen.biome.TheAbyssBiome;
@@ -143,6 +144,7 @@ public class TestMod
             event.accept(ModItems.CORRUPTED_CORE);
             event.accept(ModItems.CORRUPTED_BATTLE_AXE);
             event.accept(ModItems.GASOLINE_BUCKET);
+            event.accept(ModBlocks.FLAMING_FLOURITE_FORGE);
 
 
 
@@ -165,6 +167,8 @@ public class TestMod
             event.accept(ModBlocks.FLAMING_FLOURITE_ORE);
 
 
+
+
         }
 
         if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
@@ -174,6 +178,10 @@ public class TestMod
             event.accept(ModItems.FLAMING_FLOURITE_HOE);
             event.accept(ModItems.GASOLINE_BUCKET);
 
+        }
+
+        if (event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
+            event.accept(ModBlocks.FLAMING_FLOURITE_FORGE);
         }
 
         if (event.getTabKey() == CreativeModeTabs.NATURAL_BLOCKS) {
@@ -239,10 +247,13 @@ public class TestMod
             EntityRenderers.register(ModEntities.OBSIDIAN_GOLEM.get(), ObsidianGolemRenderer::new);
             EntityRenderers.register(ModEntities.SEA_SERPENT.get(), SeaSerpentRenderer::new);
 
-            //MenuScreens.register(ModMenuTypes..get(), ::new);
+            MenuScreens.register(ModMenuTypes.FLAMING_FLOURITE_FORGE_MENU.get(), FlamingFlouriteForgeScreen::new);
 
             ItemBlockRenderTypes.setRenderLayer(ModFluids.SOURCE_GASOLINE.get(), RenderType.translucent());
             ItemBlockRenderTypes.setRenderLayer(ModFluids.FLOWING_GASOLINE.get(), RenderType.translucent());
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.FLAMING_FLOURITE_FORGE.get(), RenderType.translucent());
+
+
 
 
         }

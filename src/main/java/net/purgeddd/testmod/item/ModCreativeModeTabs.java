@@ -17,15 +17,10 @@ public class ModCreativeModeTabs {
             TestMod.MOD_ID);
 
     public static RegistryObject<CreativeModeTab> TEST_TAB = CREATIVE_MODE_TABS.register("test_tab", () ->
-            CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.CORRUPTED_CORE.get()))
+            CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.UNHOLY_SAVIOUR_SWORD.get()))
                     .title(Component.translatable
                             ("creativemodetab.test_tab")).displayItems((pParameters, pOutput) -> {
 
-                        pOutput.accept(ModItems.FLAMING_FLOURITE_SWORD.get());
-                        pOutput.accept(ModItems.FLAMING_FLOURITE_PICKAXE.get());
-                        pOutput.accept(ModItems.FLAMING_FLOURITE_AXE.get());
-                        pOutput.accept(ModItems.FLAMING_FLOURITE_SHOVEL.get());
-                        pOutput.accept(ModItems.FLAMING_FLOURITE_HOE.get());
 
 
 

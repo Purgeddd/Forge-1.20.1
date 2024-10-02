@@ -15,6 +15,8 @@ public class ModMenuTypes {
     public static DeferredRegister<MenuType<?>> MENUS =
             DeferredRegister.create(ForgeRegistries.MENU_TYPES, TestMod.MOD_ID);
 
+    public static final RegistryObject<MenuType<FlamingFlouriteForgeMenu>> FLAMING_FLOURITE_FORGE_MENU =
+            registerMenuType(FlamingFlouriteForgeMenu::new, "flaming_flourite_forge_menu");
 
     private static <T extends AbstractContainerMenu>RegistryObject<MenuType<T>> registerMenuType(IContainerFactory<T> factory, String name) {
         return MENUS.register(name, () -> IForgeMenuType.create(factory));

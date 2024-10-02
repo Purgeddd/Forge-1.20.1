@@ -1,4 +1,4 @@
-// 1.20.1	2024-10-01T17:53:33.9016214	Item Models: testmod
+// 1.20.1	2024-10-02T15:40:44.2645051	Item Models: testmod
 4b13faaaed38c795e14261ef69c5720275315e75 assets/testmod/models/item/corrupted_battle_axe.json
 e1aa3324a7e5281ea2ae907593fd06423e9c4044 assets/testmod/models/item/corrupted_boots.json
 289f52fa647ed902a3dca0381087ee95b8721667 assets/testmod/models/item/corrupted_chestplate.json
@@ -30,6 +30,7 @@ f4bfde2b017db8f1f8463fb59a00c3fdabf6c9c9 assets/testmod/models/item/flaming_flou
 f22c8d98d40c7aa47530dec29b7f8121ecb6db5c assets/testmod/models/item/flaming_flourite_chestplate_netherite_trim.json
 b9f64c356aaae18fe2097e55d82de6e7697f25a2 assets/testmod/models/item/flaming_flourite_chestplate_quartz_trim.json
 7c64a39457d3a6218dbe6cfb5b3b0acc848cb9d0 assets/testmod/models/item/flaming_flourite_chestplate_redstone_trim.json
+8181da6779036efc52b39165518d7854bfa32940 assets/testmod/models/item/flaming_flourite_forge.json
 84d0fd93407d7a9edda06d006ee5bb83d328c988 assets/testmod/models/item/flaming_flourite_helmet.json
 932f226b201a4723c0ca79a04f118bf23e5c67f4 assets/testmod/models/item/flaming_flourite_helmet_amethyst_trim.json
 75012a0de4ee4847cbd010e3e738eab869c7d7c3 assets/testmod/models/item/flaming_flourite_helmet_copper_trim.json

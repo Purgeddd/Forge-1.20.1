@@ -17,6 +17,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.purgeddd.testmod.TestMod;
+import net.purgeddd.testmod.block.custom.FlamingFlouriteForgeBlock;
 import net.purgeddd.testmod.block.custom.ModFlammableRotatedPillarBlock;
 import net.purgeddd.testmod.fluid.ModFluids;
 import net.purgeddd.testmod.item.ModItems;
@@ -105,6 +106,9 @@ public class ModBlocks {
 
     public static final RegistryObject<LiquidBlock> GASOLINE_BLOCK = BLOCKS.register("gasoline_block",
             () -> new LiquidBlock(ModFluids.SOURCE_GASOLINE, BlockBehaviour.Properties.copy(Blocks.WATER).noLootTable()));
+
+    public static final RegistryObject<Block> FLAMING_FLOURITE_FORGE = registerBlock("flaming_flourite_forge",
+            () -> new FlamingFlouriteForgeBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion()));
 
 
 

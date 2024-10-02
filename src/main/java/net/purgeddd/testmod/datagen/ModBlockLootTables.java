@@ -18,6 +18,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
     @Override
     protected void generate() {
         dropSelf(ModBlocks.FLAMING_FLOURITE_BLOCK.get());
+        this.dropSelf(ModBlocks.FLAMING_FLOURITE_FORGE.get());
 
         add(ModBlocks.FLAMING_FLOURITE_ORE.get(),
                 (block) -> createOreDrop(ModBlocks.FLAMING_FLOURITE_ORE.get(), ModItems.FLAMING_FLOURITE.get()));

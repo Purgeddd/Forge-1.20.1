@@ -1,5 +1,6 @@
 package net.purgeddd.testmod.datagen;
 
+import net.minecraftforge.client.model.generators.ModelFile;
 import net.purgeddd.testmod.TestMod;
 import net.purgeddd.testmod.block.ModBlocks;
 import net.minecraft.data.PackOutput;
@@ -36,6 +37,9 @@ public class ModBlockStateProvider extends BlockStateProvider {
         simpleBlockItem(ModBlocks.CYAN_WOOD.get(), models().withExistingParent("testmod:cyan_wood", "minecraft:block/cube_column"));
         simpleBlockItem(ModBlocks.STRIPPED_CYAN_LOG.get(), models().withExistingParent("testmod:stripped_cyan_log", "minecraft:block/cube_column"));
         simpleBlockItem(ModBlocks.STRIPPED_CYAN_WOOD.get(), models().withExistingParent("testmod:stripped_cyan_wood", "minecraft:block/cube_column"));
+
+        horizontalBlock(ModBlocks.FLAMING_FLOURITE_FORGE.get(),
+                new ModelFile.UncheckedModelFile(modLoc("block/flaming_flourite_forge")));
     }
 
     private void blockWithItem(RegistryObject<Block> blockRegistryObject) {

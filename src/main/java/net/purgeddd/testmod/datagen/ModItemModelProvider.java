@@ -7,6 +7,7 @@ import net.minecraft.world.item.armortrim.TrimMaterial;
 import net.minecraft.world.item.armortrim.TrimMaterials;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.client.model.generators.ModelFile;
+import net.minecraftforge.registries.ForgeRegistries;
 import net.purgeddd.testmod.TestMod;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
@@ -125,13 +126,24 @@ public class ModItemModelProvider extends ItemModelProvider {
         trimmedArmorItem(ModItems.FLAMING_FLOURITE_CHESTPLATE);
         trimmedArmorItem(ModItems.FLAMING_FLOURITE_LEGGINGS);
         trimmedArmorItem(ModItems.FLAMING_FLOURITE_BOOTS);
+
+        complexBlock(ModBlocks.FLAMING_FLOURITE_FORGE.get());
     }
+
+
+
+    private ItemModelBuilder complexBlock(Block block) {
+        return withExistingParent(ForgeRegistries.BLOCKS.getKey(block).getPath(), new ResourceLocation(TestMod.MOD_ID,
+                "block/" + ForgeRegistries.BLOCKS.getKey(block).getPath()));
+    }
+
 
     private ItemModelBuilder saplingItem(RegistryObject<Block> item) {
         return withExistingParent(item.getId().getPath(),
                 new ResourceLocation("item/generated")).texture("layer0",
                 new ResourceLocation(TestMod.MOD_ID,"block/" + item.getId().getPath()));
     }
+
 
 
     private ItemModelBuilder simpleItem(RegistryObject<Item> item) {
