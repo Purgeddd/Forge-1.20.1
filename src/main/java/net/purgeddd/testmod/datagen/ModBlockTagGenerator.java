@@ -24,8 +24,6 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
 
     protected void addTags(HolderLookup.Provider pProvider) {
 
-
-
         this.tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(ModBlocks.FLAMING_FLOURITE_BLOCK.get(),
                         ModBlocks.FLAMING_FLOURITE_ORE.get());
