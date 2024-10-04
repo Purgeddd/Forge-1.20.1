@@ -24,9 +24,12 @@ import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import net.purgeddd.testmod.block.custom.FlamingFlouriteForgeBlock;
 import net.purgeddd.testmod.item.ModItems;
+import net.purgeddd.testmod.recipe.FlamingFlouriteForgeRecipe;
 import net.purgeddd.testmod.screen.FlamingFlouriteForgeMenu;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.Optional;
 
 public class FlamingFlouriteForgeBlockEntity extends BlockEntity implements MenuProvider {
 
@@ -167,10 +170,14 @@ public class FlamingFlouriteForgeBlockEntity extends BlockEntity implements Menu
     }
 
     private void craftItem() {
+
+        Optional<FlamingFlouriteForgeRecipe> recipe = getCurrentRecipe();
+        ItemStack resultItem = recipe.get().getResultItem(getLevel().registryAccess());
+
         this.itemStackHandler.extractItem(INPUT_SLOT, 1, false);
 
-        this.itemStackHandler.setStackInSlot(OUTPUT_SLOT, new ItemStack(ModItems.FLAMING_FLOURITE.get(),
-                this.itemStackHandler.getStackInSlot(OUTPUT_SLOT).getCount() + 1));
+        this.itemStackHandler.setStackInSlot(OUTPUT_SLOT, new ItemStack(resultItem.getItem(),
+                this.itemStackHandler.getStackInSlot(OUTPUT_SLOT).getCount() + resultItem.getCount()));
     }
 
     private void resetProgress() {
@@ -186,12 +193,25 @@ public class FlamingFlouriteForgeBlockEntity extends BlockEntity implements Menu
     }
 
     private boolean hasRecipe() {
-        return canInsertAmountIntoOutputSlot(1) && canInsertItemIntoOutputSlot(ModItems.FLAMING_FLOURITE.get())
-                && hasRecipeItemInInputSlot();
+
+        Optional<FlamingFlouriteForgeRecipe> recipe = getCurrentRecipe();
+
+        if (recipe.isEmpty()) {
+            return false;
+        }
+
+        ItemStack resultItem = recipe.get().getResultItem(getLevel().registryAccess());
+
+        return canInsertAmountIntoOutputSlot(resultItem.getCount())
+                && canInsertItemIntoOutputSlot(resultItem.getItem());
     }
 
-    private boolean hasRecipeItemInInputSlot() {
-        return this.itemStackHandler.getStackInSlot(INPUT_SLOT).getItem() == ModItems.FORSAKEN_FEATHER.get();
+    private Optional<FlamingFlouriteForgeRecipe> getCurrentRecipe() {
+        SimpleContainer inventory = new SimpleContainer(this.itemStackHandler.getSlots());
+        for (int i = 0; i < this.itemStackHandler.getSlots(); i++) {
+            inventory.setItem(i, this.itemStackHandler.getStackInSlot(i));
+        }
+        return this.level.getRecipeManager().getRecipeFor(FlamingFlouriteForgeRecipe.Type.INSTANCE, inventory, level);
     }
 
     private boolean canInsertItemIntoOutputSlot(Item item) {

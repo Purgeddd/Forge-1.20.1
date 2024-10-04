@@ -1,0 +1,12 @@
+{
+  "type": "testmod:flaming",
+  "ingredients": [
+    {
+      "item": "testmod:corrupted_core"
+    }
+  ],
+  "output": {
+    "count": 3,
+    "item": "testmod:forsaken_feather"
+  }
+}

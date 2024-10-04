@@ -1,4 +1,4 @@
-// 1.20.1	2024-10-04T11:52:48.3516898	Recipes
+// 1.20.1	2024-10-04T16:54:43.5922347	Recipes
 783e28aeb906fc2924ae4e66c65b115bbe28af5e data/minecraft/advancements/recipes/building_blocks/crafting_table.json
 606e0688c73c94fa71d397ce7c5c118fe36d1c83 data/minecraft/advancements/recipes/misc/stick.json
 9309a1ce8c13d60825f6d1f1cd8d665ed625c2f0 data/minecraft/recipes/crafting_table.json
@@ -17,6 +17,7 @@ bf9eb96dfd26e8edbd3eb2eabbeabe0e8327ef17 data/testmod/advancements/recipes/comba
 2cc53716b78875a073540867e61d389855433964 data/testmod/advancements/recipes/combat/flaming_flourite_sword.json
 2c0beebc705868a7125a27d2a60ab6e4fecb4b48 data/testmod/advancements/recipes/combat/unholy_saviour_sword.json
 571b6ff5201d692aca0b37b691f6b345245fe53b data/testmod/advancements/recipes/food/rainbow_apple.json
+458e1b5cddd9d2459651495cb35869800a285a6f data/testmod/advancements/recipes/forsaken_feather.json
 54e4290c79831c25baae3781b998888e0ed2f1d1 data/testmod/advancements/recipes/misc/flaming_flourite.json
 ae303a133ae9d3465d881b7a667ccf2f50ac59df data/testmod/advancements/recipes/misc/obsidian_rod.json
 cf950442fb6ac8d7e2ec2634fff1beaa16c44f3c data/testmod/advancements/recipes/tools/flaming_flourite_axe.json
@@ -40,6 +41,7 @@ fe806f2d40e17ab93ff34d8a7b347a42158fa1e5 data/testmod/recipes/flaming_flourite_l
 4ec256d5b2f558b127a54dcab003be485bf83db1 data/testmod/recipes/flaming_flourite_pickaxe.json
 94d9bd8a7adf638383a21433e043f1a1d0b442c5 data/testmod/recipes/flaming_flourite_shovel.json
 4a80cf2f94b7c61dc2cdb0ef4cabeb58f6f2f3f8 data/testmod/recipes/flaming_flourite_sword.json
+bfb047e41610cfea59823172ba27f3906efae009 data/testmod/recipes/forsaken_feather_from_flaming.json
 86e3f7fa732bf32e4c2cc86b7be051a984740744 data/testmod/recipes/obsidian_rod.json
 35a663247794ef33a3f299258ef5164fd59efd8d data/testmod/recipes/rainbow_apple.json
 1ddc6a9569e51818921a961c6a03fd14bb139781 data/testmod/recipes/unholy_saviour_sword.json

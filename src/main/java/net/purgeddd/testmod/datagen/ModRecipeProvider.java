@@ -7,6 +7,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.fml.common.Mod;
 import net.purgeddd.testmod.block.ModBlocks;
+import net.purgeddd.testmod.datagen.custom.FlamingFlouriteForgeRecipeBuilder;
 import net.purgeddd.testmod.item.ModItems;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
@@ -242,6 +243,9 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .group("cyan_planks")
                 .unlockedBy("has_cyan_logs", has(ModTags.Items.CYAN_LOGS)) // Unlock condition based on cyan_logs tag
                 .save(pWriter);
+
+        new FlamingFlouriteForgeRecipeBuilder(ModItems.CORRUPTED_CORE.get(), ModItems.FORSAKEN_FEATHER.get(), 3)
+                .unlockedBy("has_corrupted_core", has(ModItems.CORRUPTED_CORE.get())).save(pWriter);
 
 
 

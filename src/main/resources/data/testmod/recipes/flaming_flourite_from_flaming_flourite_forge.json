@@ -1,0 +1,12 @@
+{
+  "type": "testmod:flaming",
+  "ingredients": [
+    {
+      "item": "testmod:forsaken_feather"
+    }
+  ],
+  "output": {
+    "count": 3,
+    "item": "testmod:flaming_flourite"
+  }
+}

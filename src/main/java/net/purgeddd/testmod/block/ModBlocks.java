@@ -108,8 +108,8 @@ public class ModBlocks {
             () -> new LiquidBlock(ModFluids.SOURCE_GASOLINE, BlockBehaviour.Properties.copy(Blocks.WATER).noLootTable()));
 
     public static final RegistryObject<Block> FLAMING_FLOURITE_FORGE = registerBlock("flaming_flourite_forge",
-            () -> new FlamingFlouriteForgeBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion()));
-
+            () -> new FlamingFlouriteForgeBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
+                    .noOcclusion().lightLevel(state -> state.getValue(FlamingFlouriteForgeBlock.LIT) ? 15 : 0)));
 
 
 
