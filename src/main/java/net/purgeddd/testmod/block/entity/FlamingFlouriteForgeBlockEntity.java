@@ -20,9 +20,14 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.capability.IFluidHandler;
+import net.minecraftforge.fluids.capability.IFluidHandlerItem;
+import net.minecraftforge.fluids.capability.templates.FluidTank;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import net.purgeddd.testmod.block.custom.FlamingFlouriteForgeBlock;
+import net.purgeddd.testmod.fluid.ModFluids;
 import net.purgeddd.testmod.item.ModItems;
 import net.purgeddd.testmod.recipe.FlamingFlouriteForgeRecipe;
 import net.purgeddd.testmod.screen.FlamingFlouriteForgeMenu;
@@ -43,7 +48,7 @@ public class FlamingFlouriteForgeBlockEntity extends BlockEntity implements Menu
         @Override
         public boolean isItemValid(int slot, @NotNull ItemStack stack) {
             return switch (slot) {
-                case 0 -> stack.getItem() == ModItems.GASOLINE_BUCKET.get();
+                case 0 -> stack.getCapability(ForgeCapabilities.FLUID_HANDLER_ITEM).isPresent();
                 case 1 -> false;
                 case 2 -> true;
                 default -> super.isItemValid(slot, stack);
@@ -57,9 +62,30 @@ public class FlamingFlouriteForgeBlockEntity extends BlockEntity implements Menu
 
     private LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.empty();
 
+    private LazyOptional<IFluidHandler> lazyFluidHandler = LazyOptional.empty();
+
     protected final ContainerData data;
     protected int progress = 0;
     private int maxProgress = 70;
+
+    private final FluidTank FLUID_TANK = createFluidTank();
+
+    private FluidTank createFluidTank() {
+        return new FluidTank(64000) {
+            @Override
+            protected void onContentsChanged() {
+                setChanged();
+                if(!level.isClientSide()){
+                    level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
+                }
+            }
+
+            @Override
+            public boolean isFluidValid(FluidStack stack) {
+                return stack.getFluid() == ModFluids.SOURCE_GASOLINE.get();
+            }
+        };
+    }
 
     public FlamingFlouriteForgeBlockEntity(BlockPos blockPos, BlockState blockState) {
         super(ModBlockEntities.FLAMING_FLOURITE_FORGE_BE.get(), blockPos, blockState);
@@ -89,6 +115,10 @@ public class FlamingFlouriteForgeBlockEntity extends BlockEntity implements Menu
         };
     }
 
+    public FluidStack getFluid() {
+        return FLUID_TANK.getFluid();
+    }
+
     public void drops() {
         SimpleContainer inventory = new SimpleContainer(itemStackHandler.getSlots());
         for (int i = 0; i < itemStackHandler.getSlots(); i++) {
@@ -114,6 +144,11 @@ public class FlamingFlouriteForgeBlockEntity extends BlockEntity implements Menu
         if(cap == ForgeCapabilities.ITEM_HANDLER){
             return lazyItemHandler.cast();
         }
+
+        if(cap == ForgeCapabilities.FLUID_HANDLER){
+            return lazyFluidHandler.cast();
+        }
+
         return super.getCapability(cap, side);
     }
 
@@ -121,24 +156,28 @@ public class FlamingFlouriteForgeBlockEntity extends BlockEntity implements Menu
     public void onLoad() {
         super.onLoad();
         lazyItemHandler = LazyOptional.of(() -> itemStackHandler);
+        lazyFluidHandler = LazyOptional.of(() -> FLUID_TANK);
     }
 
     @Override
     public void invalidateCaps() {
         super.invalidateCaps();
         lazyItemHandler.invalidate();
+        lazyFluidHandler.invalidate();
     }
 
     @Override
     protected void saveAdditional(CompoundTag tag) {
         tag.put("inventory", itemStackHandler.serializeNBT());
+        tag = FLUID_TANK.writeToNBT(tag);
         super.saveAdditional(tag);
     }
 
     @Override
-    public void load(CompoundTag compoundTag) {
-        super.load(compoundTag);
-        itemStackHandler.deserializeNBT(compoundTag.getCompound("inventory"));
+    public void load(CompoundTag tag) {
+        super.load(tag);
+        itemStackHandler.deserializeNBT(tag.getCompound("inventory"));
+        FLUID_TANK.readFromNBT(tag);
     }
 
 
@@ -147,6 +186,8 @@ public class FlamingFlouriteForgeBlockEntity extends BlockEntity implements Menu
 
         boolean isLit = pState.getValue(FlamingFlouriteForgeBlock.LIT);
 
+        fillUpOnFluid();
+        
         if (isOutputSlotEmptyOrReceivable() && hasRecipe()) {
             increaseCraftingProcess();
             setChanged(level, pPos, pState);
@@ -158,6 +199,7 @@ public class FlamingFlouriteForgeBlockEntity extends BlockEntity implements Menu
 
             if (hasProgressFinished()) {
                 craftItem();
+                extractFluid();
                 resetProgress();
             }
 
@@ -167,6 +209,41 @@ public class FlamingFlouriteForgeBlockEntity extends BlockEntity implements Menu
                 level.setBlock(pPos, pState.setValue(FlamingFlouriteForgeBlock.LIT, false), 3);
             }
         }
+    }
+
+    private void extractFluid() {
+        this.FLUID_TANK.drain(500, IFluidHandler.FluidAction.EXECUTE);
+    }
+
+    private void fillUpOnFluid() {
+        if(hasFluidSourceInSlot(FLUID_INPUT_SLOT)){
+            transferItemFluidToTank(FLUID_INPUT_SLOT);
+        }
+    }
+
+    private void transferItemFluidToTank(int fluidInputSlot) {
+        this.itemStackHandler.getStackInSlot(fluidInputSlot).getCapability(ForgeCapabilities.FLUID_HANDLER_ITEM).ifPresent(IFluidHandlerItem -> {
+            int drainAmount = Math.min(this.FLUID_TANK.getSpace(), 2000);
+
+            FluidStack stack = IFluidHandlerItem.drain(drainAmount, IFluidHandler.FluidAction.SIMULATE);
+            if(stack.getFluid() == ModFluids.SOURCE_GASOLINE.get()){
+                stack = IFluidHandlerItem.drain(drainAmount, IFluidHandler.FluidAction.EXECUTE);
+                fillTankWithFluid(stack, IFluidHandlerItem.getContainer());
+            }
+
+        });
+    }
+
+    private void fillTankWithFluid(FluidStack stack, ItemStack container) {
+        this.FLUID_TANK.fill(new FluidStack(stack.getFluid(), stack.getAmount()), IFluidHandler.FluidAction.EXECUTE);
+
+        this.itemStackHandler.extractItem(FLUID_INPUT_SLOT, 1, false);
+        this.itemStackHandler.insertItem(FLUID_INPUT_SLOT, container, false);
+    }
+
+    private boolean hasFluidSourceInSlot(int fluidInputSlot) {
+        return this.itemStackHandler.getStackInSlot(fluidInputSlot).getCount() > 0 &&
+                this.itemStackHandler.getStackInSlot(fluidInputSlot).getCapability(ForgeCapabilities.FLUID_HANDLER_ITEM).isPresent();
     }
 
     private void craftItem() {
@@ -203,7 +280,12 @@ public class FlamingFlouriteForgeBlockEntity extends BlockEntity implements Menu
         ItemStack resultItem = recipe.get().getResultItem(getLevel().registryAccess());
 
         return canInsertAmountIntoOutputSlot(resultItem.getCount())
-                && canInsertItemIntoOutputSlot(resultItem.getItem());
+                && canInsertItemIntoOutputSlot(resultItem.getItem())
+                && hasEnoughFluidToCraft();
+    }
+
+    private boolean hasEnoughFluidToCraft() {
+        return  this.FLUID_TANK.getFluidAmount() >= 500;
     }
 
     private Optional<FlamingFlouriteForgeRecipe> getCurrentRecipe() {
@@ -227,7 +309,6 @@ public class FlamingFlouriteForgeBlockEntity extends BlockEntity implements Menu
         return this.itemStackHandler.getStackInSlot(OUTPUT_SLOT).isEmpty() ||
                 this.itemStackHandler.getStackInSlot(OUTPUT_SLOT).getCount() < this.itemStackHandler.getStackInSlot(OUTPUT_SLOT).getMaxStackSize();
     }
-
 
 }
 
