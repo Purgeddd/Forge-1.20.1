@@ -227,7 +227,7 @@ public class FlamingFlouriteForgeBlockEntity extends BlockEntity implements Menu
 
     private void transferItemFluidToTank(int fluidInputSlot) {
         this.itemStackHandler.getStackInSlot(fluidInputSlot).getCapability(ForgeCapabilities.FLUID_HANDLER_ITEM).ifPresent(IFluidHandlerItem -> {
-            int drainAmount = Math.min(this.FLUID_TANK.getSpace(), 1000);
+            int drainAmount = Math.min(this.FLUID_TANK.getSpace(), 2000);
 
             FluidStack stack = IFluidHandlerItem.drain(drainAmount, IFluidHandler.FluidAction.SIMULATE);
             if(stack.getFluid() == ModFluids.SOURCE_GASOLINE.get()){

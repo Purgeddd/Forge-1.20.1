@@ -183,7 +183,7 @@ public class FluidTankRenderer {
             tooltip.add(displayName);
 
             long amount = fluidStack.getAmount();
-            long milliBuckets = (amount * 1000) / FluidType.BUCKET_VOLUME;
+            long milliBuckets = (amount * 2000) / FluidType.BUCKET_VOLUME;
 
             if (tooltipMode == TooltipMode.SHOW_AMOUNT_AND_CAPACITY) {
                 MutableComponent amountString = Component.translatable("testmod.tooltip.liquid.amount.with.capacity", nf.format(milliBuckets), nf.format(capacity));
