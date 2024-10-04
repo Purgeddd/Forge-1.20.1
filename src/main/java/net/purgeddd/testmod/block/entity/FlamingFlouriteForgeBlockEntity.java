@@ -22,6 +22,7 @@ import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
+import net.purgeddd.testmod.block.custom.FlamingFlouriteForgeBlock;
 import net.purgeddd.testmod.item.ModItems;
 import net.purgeddd.testmod.screen.FlamingFlouriteForgeMenu;
 import org.jetbrains.annotations.NotNull;
@@ -137,10 +138,20 @@ public class FlamingFlouriteForgeBlockEntity extends BlockEntity implements Menu
         itemStackHandler.deserializeNBT(compoundTag.getCompound("inventory"));
     }
 
+
+
     public void tick(Level level, BlockPos pPos, BlockState pState) {
+
+        boolean isLit = pState.getValue(FlamingFlouriteForgeBlock.LIT);
+
         if (isOutputSlotEmptyOrReceivable() && hasRecipe()) {
             increaseCraftingProcess();
             setChanged(level, pPos, pState);
+
+            if (!isLit) {
+                level.setBlock(pPos, pState.setValue(FlamingFlouriteForgeBlock.LIT, true), 3);
+            }
+
 
             if (hasProgressFinished()) {
                 craftItem();
@@ -149,6 +160,9 @@ public class FlamingFlouriteForgeBlockEntity extends BlockEntity implements Menu
 
         } else {
             resetProgress();
+            if (isLit) {
+                level.setBlock(pPos, pState.setValue(FlamingFlouriteForgeBlock.LIT, false), 3);
+            }
         }
     }
 
@@ -193,6 +207,8 @@ public class FlamingFlouriteForgeBlockEntity extends BlockEntity implements Menu
         return this.itemStackHandler.getStackInSlot(OUTPUT_SLOT).isEmpty() ||
                 this.itemStackHandler.getStackInSlot(OUTPUT_SLOT).getCount() < this.itemStackHandler.getStackInSlot(OUTPUT_SLOT).getMaxStackSize();
     }
+
+
 }
 
 

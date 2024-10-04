@@ -1,10 +1,9 @@
-// 1.20.1	2024-10-02T16:02:44.9614964	Block States: testmod
+// 1.20.1	2024-10-04T11:52:48.3531925	Block States: testmod
 09d5644a6a03524c05449ea6332f64ee49c07445 assets/testmod/blockstates/cyan_log.json
 008fb973adc9678157e700ee09f4d595df0b051b assets/testmod/blockstates/cyan_planks.json
 9f79a9eada391eb50ba80f6cf366d390b0f430ae assets/testmod/blockstates/cyan_sapling.json
 7d94845fd1b93bd5c17760bf3825a949196f83fb assets/testmod/blockstates/cyan_wood.json
 9d96ae7427930c8506d0fabd55ccbcbef3f678e2 assets/testmod/blockstates/flaming_flourite_block.json
-208c4212e48c3262b02361bd5de28e6c2641a705 assets/testmod/blockstates/flaming_flourite_forge.json
 95cc77d611e4759576a5e149103c7fea74997193 assets/testmod/blockstates/flaming_flourite_ore.json
 53f8a0f6892b9f8a73b89551db52e7924379f510 assets/testmod/blockstates/pink_leaves.json
 897b4fc5f97b36db136b0130f8ad064032d945f8 assets/testmod/blockstates/stripped_cyan_log.json

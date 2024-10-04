@@ -36,7 +36,7 @@ public class FlamingFlouriteForgeMenu extends AbstractContainerMenu {
 
         this.blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(iItemHandler -> {
             this.addSlot(new SlotItemHandler(iItemHandler, 0, 26, 61));
-            this.addSlot(new SlotItemHandler(iItemHandler, 1, 75, 19));
+            this.addSlot(new SlotItemHandler(iItemHandler, 1, 80, 24));
             this.addSlot(new SlotItemHandler(iItemHandler, 2, 134, 61));
 
         });
@@ -51,7 +51,7 @@ public class FlamingFlouriteForgeMenu extends AbstractContainerMenu {
     public int getScaledProgress() {
         int progress = this.data.get(0);
         int maxProgress = this.data.get(1);  // Max Progress
-        int progressArrowSize = 25; // This is the height in pixels of your arrow
+        int progressArrowSize = 26; // This is the height in pixels of your arrow
 
         return maxProgress != 0 && progress != 0 ? progress * progressArrowSize / maxProgress : 0;
     }

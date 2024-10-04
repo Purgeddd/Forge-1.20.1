@@ -1,0 +1,6 @@
+{
+    "parent": "testmod:item/flaming_flourite_bow",
+    "textures": {
+        "layer0": "testmod:item/flaming_flourite_bow_pulling_0"
+    }
+}

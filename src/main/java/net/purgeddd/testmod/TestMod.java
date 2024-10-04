@@ -25,6 +25,7 @@ import net.purgeddd.testmod.entity.client.*;
 import net.purgeddd.testmod.fluid.ModFluidTypes;
 import net.purgeddd.testmod.fluid.ModFluids;
 import net.purgeddd.testmod.item.ModCreativeModeTabs;
+import net.purgeddd.testmod.item.ModItemProperties;
 import net.purgeddd.testmod.item.ModItems;
 import net.purgeddd.testmod.recipe.ModRecipes;
 import net.purgeddd.testmod.screen.FlamingFlouriteForgeScreen;
@@ -106,13 +107,14 @@ public class TestMod
         }
         if (event.getTab() == ModCreativeModeTabs.TEST_TAB.get()) {
             event.accept(ModItems.FLAMING_FLOURITE);
+            event.accept(ModBlocks.FLAMING_FLOURITE_BLOCK);
+            event.accept(ModBlocks.FLAMING_FLOURITE_ORE);
             event.accept(ModItems.FLAMING_FLOURITE_SWORD);
             event.accept(ModItems.FLAMING_FLOURITE_PICKAXE);
             event.accept(ModItems.FLAMING_FLOURITE_AXE);
             event.accept(ModItems.FLAMING_FLOURITE_SHOVEL);
             event.accept(ModItems.FLAMING_FLOURITE_HOE);
-            event.accept(ModBlocks.FLAMING_FLOURITE_BLOCK);
-            event.accept(ModBlocks.FLAMING_FLOURITE_ORE);
+            event.accept(ModItems.FLAMING_FLOURITE_BOW);
             event.accept(ModBlocks.CYAN_LOG);
             event.accept(ModBlocks.CYAN_WOOD);
             event.accept(ModBlocks.CYAN_PLANKS);
@@ -145,6 +147,7 @@ public class TestMod
             event.accept(ModItems.CORRUPTED_BATTLE_AXE);
             event.accept(ModItems.GASOLINE_BUCKET);
             event.accept(ModBlocks.FLAMING_FLOURITE_FORGE);
+
 
 
 
@@ -209,6 +212,7 @@ public class TestMod
 
         if (event.getTabKey() == CreativeModeTabs.COMBAT){
             event.accept(ModItems.FLAMING_FLOURITE_SWORD);
+            event.accept(ModItems.FLAMING_FLOURITE_BOW);
             event.accept(ModItems.FLAMING_FLOURITE_HELMET);
             event.accept(ModItems.FLAMING_FLOURITE_CHESTPLATE);
             event.accept(ModItems.FLAMING_FLOURITE_LEGGINGS);
@@ -253,8 +257,9 @@ public class TestMod
             ItemBlockRenderTypes.setRenderLayer(ModFluids.FLOWING_GASOLINE.get(), RenderType.translucent());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.FLAMING_FLOURITE_FORGE.get(), RenderType.translucent());
 
-
-
+            event.enqueueWork(() -> {
+                ModItemProperties.addCustomItemProperties();
+            });
 
         }
     }

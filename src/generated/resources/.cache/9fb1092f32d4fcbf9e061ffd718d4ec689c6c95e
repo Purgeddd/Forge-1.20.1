@@ -1,4 +1,4 @@
-// 1.20.1	2024-09-19T18:35:53.177396	Recipes
+// 1.20.1	2024-10-04T11:52:48.3516898	Recipes
 783e28aeb906fc2924ae4e66c65b115bbe28af5e data/minecraft/advancements/recipes/building_blocks/crafting_table.json
 606e0688c73c94fa71d397ce7c5c118fe36d1c83 data/minecraft/advancements/recipes/misc/stick.json
 9309a1ce8c13d60825f6d1f1cd8d665ed625c2f0 data/minecraft/recipes/crafting_table.json
@@ -10,6 +10,7 @@ eebf9a27348a33bc98d53eb36e4eed9822e9413d data/testmod/advancements/recipes/comba
 40ea2326a20a33a395693ca9b90911b9cb56d1bb data/testmod/advancements/recipes/combat/corrupted_helmet.json
 2221e1950b631d2923b52fa5bbddac24621b6ea4 data/testmod/advancements/recipes/combat/corrupted_leggings.json
 c1cfd2770842064261da4e0ec2bb5bb4c326fbe4 data/testmod/advancements/recipes/combat/flaming_flourite_boots.json
+bf9eb96dfd26e8edbd3eb2eabbeabe0e8327ef17 data/testmod/advancements/recipes/combat/flaming_flourite_bow.json
 8cbb5cd9bb41f798819f10ad8d78a9cc59675011 data/testmod/advancements/recipes/combat/flaming_flourite_chestplate.json
 9f21ff7cc3ec97b58a6b7f271c765ad7b495ac80 data/testmod/advancements/recipes/combat/flaming_flourite_helmet.json
 56f15b871222fdc6bb0ee1dcee8e5c75ed8df2c0 data/testmod/advancements/recipes/combat/flaming_flourite_leggings.json
@@ -31,6 +32,7 @@ acbebfbdc5c8abf75d602d4d44c298a57c118ba7 data/testmod/recipes/corrupted_chestpla
 9b97604505e95a43a1e54aae9bbc51ec0d983809 data/testmod/recipes/flaming_flourite_axe.json
 7be7c043a4dc0bb602b6c248d120c8e0b13cfb1f data/testmod/recipes/flaming_flourite_block.json
 055832fb879b2466c38146f0e5f41c64eaba651a data/testmod/recipes/flaming_flourite_boots.json
+939509a904fb97a6d1e4fd81843ad8479a41394d data/testmod/recipes/flaming_flourite_bow.json
 b37312bf5e6cfc180b8b342805e1055cd172c2cc data/testmod/recipes/flaming_flourite_chestplate.json
 71fefcf4e113dea93c59638a9d73faba35795f80 data/testmod/recipes/flaming_flourite_helmet.json
 84890c287f3b0edef074aeb0f591b95407278617 data/testmod/recipes/flaming_flourite_hoe.json

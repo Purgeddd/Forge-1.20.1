@@ -1,7 +1,13 @@
 package net.purgeddd.testmod.block.custom;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -15,6 +21,7 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -28,8 +35,11 @@ public class FlamingFlouriteForgeBlock extends BaseEntityBlock {
 
     public static final VoxelShape SHAPE = Block.box(0, 0, 0, 16, 16, 16);
 
+    public static final BooleanProperty LIT = BooleanProperty.create("lit");
+
     public FlamingFlouriteForgeBlock(Properties properties) {
         super(properties);
+        this.registerDefaultState(this.defaultBlockState().setValue(LIT, false));
     }
 
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
@@ -51,6 +61,7 @@ public class FlamingFlouriteForgeBlock extends BaseEntityBlock {
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
         pBuilder.add(FACING);
+        pBuilder.add(LIT);
     }
 
     @Override
@@ -75,8 +86,8 @@ public class FlamingFlouriteForgeBlock extends BaseEntityBlock {
     public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
         if (!pLevel.isClientSide()) {
             BlockEntity entity = pLevel.getBlockEntity(pPos);
-            if(entity instanceof FlamingFlouriteForgeBlockEntity) {
-                NetworkHooks.openScreen(((ServerPlayer)pPlayer), (FlamingFlouriteForgeBlockEntity)entity, pPos);
+            if (entity instanceof FlamingFlouriteForgeBlockEntity) {
+                NetworkHooks.openScreen(((ServerPlayer) pPlayer), (FlamingFlouriteForgeBlockEntity) entity, pPos);
             } else {
                 throw new IllegalStateException("Our Container provider is missing!");
             }
@@ -98,7 +109,7 @@ public class FlamingFlouriteForgeBlock extends BaseEntityBlock {
 
     @Override
     public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState blockState, BlockEntityType<T> blockEntityType) {
-        if(level.isClientSide) {
+        if (level.isClientSide) {
             return null;
         }
         return createTickerHelper(blockEntityType, ModBlockEntities.FLAMING_FLOURITE_FORGE_BE.get(), (level1, blockPos, blockState1, flamingFlouriteForgeBlockEntity)
@@ -107,6 +118,28 @@ public class FlamingFlouriteForgeBlock extends BaseEntityBlock {
 
     @Override
     public @Nullable BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState) {
-        return new FlamingFlouriteForgeBlockEntity(blockPos,blockState);
+        return new FlamingFlouriteForgeBlockEntity(blockPos, blockState);
+    }
+
+    @Override
+    public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
+        if (state.getValue(LIT)) {
+            double x = (double) pos.getX() + 0.5;
+            double y = (double) pos.getY();
+            double z = (double) pos.getZ() + 0.5;
+
+            if (random.nextDouble() < 0.1) {
+                level.playLocalSound(x, y, z, SoundEvents.FURNACE_FIRE_CRACKLE, SoundSource.BLOCKS, 1.0F, 1.0F, false);
+            }
+
+            Direction direction = state.getValue(FACING);
+            double offset = 0.52;
+            double randomOffset = random.nextDouble() * 0.6 - 0.3;
+            double offsetX = direction.getStepX() * offset;
+            double offsetZ = direction.getStepZ() * offset;
+
+            level.addParticle(ParticleTypes.SMOKE, x + offsetX, y, z + offsetZ, 0.0D, 0.0D, 0.0D);
+            level.addParticle(ParticleTypes.FLAME, x + offsetX, y, z + offsetZ, 0.0D, 0.0D, 0.0D);
+        }
     }
 }

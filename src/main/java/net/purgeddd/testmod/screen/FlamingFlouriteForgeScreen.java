@@ -48,7 +48,7 @@ public class FlamingFlouriteForgeScreen extends AbstractContainerScreen<FlamingF
 
     private void renderProgressArrow(GuiGraphics guiGraphics, int x, int y) {
         if(menu.isCrafting()) {
-            guiGraphics.blit(TEXTURE, x + 43, y + 28, 176, 5, 15, menu.getScaledProgress());
+            guiGraphics.blit(TEXTURE, x + 42, y + 23, 176, 0, menu.getScaledProgress(), 15);
         }
     }
 

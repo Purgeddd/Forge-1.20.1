@@ -36,6 +36,17 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(ModItems.OBSIDIAN_ROD.get()), has(ModItems.OBSIDIAN_ROD.get()))
                 .save(pWriter);
 
+        // FF Bow
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.FLAMING_FLOURITE_BOW.get())
+                .pattern(" FS")
+                .pattern("F S")
+                .pattern(" FS")
+                .define('F', ModItems.FLAMING_FLOURITE.get())
+                .define('S', Items.STRING.asItem())
+                .unlockedBy(getHasName(ModItems.FLAMING_FLOURITE.get()), has(ModItems.FLAMING_FLOURITE.get()))
+                .unlockedBy(getHasName(Items.STRING.asItem()), has(Items.STRING.asItem()))
+                .save(pWriter);
+
         // FF Pickaxe
         ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.FLAMING_FLOURITE_PICKAXE.get())
                 .pattern("FFF")

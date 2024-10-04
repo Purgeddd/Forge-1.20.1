@@ -10,6 +10,7 @@ import net.purgeddd.testmod.TestMod;
 import net.purgeddd.testmod.entity.ModEntities;
 import net.purgeddd.testmod.fluid.ModFluids;
 import net.purgeddd.testmod.item.custom.CorruptedArmorItem;
+import net.purgeddd.testmod.item.custom.FlamingFlouriteBowItem;
 import net.purgeddd.testmod.item.custom.ModArmorItem;
 import net.purgeddd.testmod.item.custom.UnholySaviourSwordItem;
 
@@ -64,6 +65,9 @@ public class ModItems {
 
     public static final RegistryObject<Item> CORRUPTED_BATTLE_AXE = ITEMS.register("corrupted_battle_axe",
             () -> new AxeItem(ModToolTiers.CORRUPTED, 6,2, new Item.Properties()));
+
+    public static final RegistryObject<Item> FLAMING_FLOURITE_BOW = ITEMS.register("flaming_flourite_bow",
+            () -> new FlamingFlouriteBowItem(new Item.Properties().stacksTo(1)));
 
     public static final RegistryObject<Item> PARASAUR_SPAWN_EGG = ITEMS.register("parasaur_spawn_egg",
             () -> new ForgeSpawnEggItem(ModEntities.PARASAUR, 0xA2CD70,0xFF8700,

@@ -8,6 +8,7 @@ import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.animal.WaterAnimal;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.level.levelgen.Heightmap;
+import net.minecraftforge.client.event.ComputeFovModifierEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 
 import net.minecraftforge.event.entity.SpawnPlacementRegisterEvent;
@@ -18,6 +19,7 @@ import net.purgeddd.testmod.TestMod;
 import net.purgeddd.testmod.entity.ModEntities;
 import net.purgeddd.testmod.entity.client.GoldenChickenRenderer;
 import net.purgeddd.testmod.entity.custom.*;
+import net.purgeddd.testmod.item.custom.FlamingFlouriteBowItem;
 
 
 @Mod.EventBusSubscriber(modid = TestMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
@@ -33,7 +35,6 @@ public class ModEvents {
 
 
     }
-
 
     @SubscribeEvent
     public static void entitySpawnRestriction(SpawnPlacementRegisterEvent event) {
