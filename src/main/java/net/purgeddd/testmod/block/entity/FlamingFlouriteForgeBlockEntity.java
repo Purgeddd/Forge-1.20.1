@@ -3,7 +3,11 @@ package net.purgeddd.testmod.block.entity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.Connection;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.protocol.game.ClientGamePacketListener;
+import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.Containers;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleContainer;
@@ -71,7 +75,7 @@ public class FlamingFlouriteForgeBlockEntity extends BlockEntity implements Menu
     private final FluidTank FLUID_TANK = createFluidTank();
 
     private FluidTank createFluidTank() {
-        return new FluidTank(64000) {
+        return new FluidTank(100000) {
             @Override
             protected void onContentsChanged() {
                 setChanged();
@@ -223,7 +227,7 @@ public class FlamingFlouriteForgeBlockEntity extends BlockEntity implements Menu
 
     private void transferItemFluidToTank(int fluidInputSlot) {
         this.itemStackHandler.getStackInSlot(fluidInputSlot).getCapability(ForgeCapabilities.FLUID_HANDLER_ITEM).ifPresent(IFluidHandlerItem -> {
-            int drainAmount = Math.min(this.FLUID_TANK.getSpace(), 2000);
+            int drainAmount = Math.min(this.FLUID_TANK.getSpace(), 1000);
 
             FluidStack stack = IFluidHandlerItem.drain(drainAmount, IFluidHandler.FluidAction.SIMULATE);
             if(stack.getFluid() == ModFluids.SOURCE_GASOLINE.get()){
@@ -285,7 +289,7 @@ public class FlamingFlouriteForgeBlockEntity extends BlockEntity implements Menu
     }
 
     private boolean hasEnoughFluidToCraft() {
-        return  this.FLUID_TANK.getFluidAmount() >= 500;
+        return this.FLUID_TANK.getFluidAmount() >= 500;
     }
 
     private Optional<FlamingFlouriteForgeRecipe> getCurrentRecipe() {
@@ -309,6 +313,23 @@ public class FlamingFlouriteForgeBlockEntity extends BlockEntity implements Menu
         return this.itemStackHandler.getStackInSlot(OUTPUT_SLOT).isEmpty() ||
                 this.itemStackHandler.getStackInSlot(OUTPUT_SLOT).getCount() < this.itemStackHandler.getStackInSlot(OUTPUT_SLOT).getMaxStackSize();
     }
+
+    @Nullable
+    @Override
+    public Packet<ClientGamePacketListener> getUpdatePacket() {
+        return ClientboundBlockEntityDataPacket.create(this);
+    }
+
+    @Override
+    public CompoundTag getUpdateTag() {
+        return saveWithoutMetadata();
+    }
+
+    @Override
+    public void onDataPacket(Connection net, ClientboundBlockEntityDataPacket pkt) {
+        super.onDataPacket(net, pkt);
+    }
+
 
 }
 

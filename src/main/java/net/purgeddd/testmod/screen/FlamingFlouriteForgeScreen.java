@@ -52,7 +52,7 @@ public class FlamingFlouriteForgeScreen extends AbstractContainerScreen<FlamingF
     }
 
     private void assignFluidRenderer() {
-        fluidRenderer = new FluidTankRenderer(64000,true, 15,43);
+        fluidRenderer = new FluidTankRenderer(100000,true, 16,43);
     }
 
 
@@ -69,7 +69,7 @@ public class FlamingFlouriteForgeScreen extends AbstractContainerScreen<FlamingF
 
         renderProgressArrow(guiGraphics, x, y);
 
-        fluidRenderer.render(guiGraphics, x + 26,y + 9, menu.blockEntity.getFluid());
+        fluidRenderer.render(guiGraphics, x + 26,y + 10, menu.blockEntity.getFluid());
 
     }
 
@@ -106,8 +106,5 @@ public class FlamingFlouriteForgeScreen extends AbstractContainerScreen<FlamingF
         return MouseUtil.isMouseOver(pMouseX, pMouseY, x + offsetX, y + offsetY, renderer.getWidth(), renderer.getHeight());
     }
 
-    private boolean isMouseAboveArea(int pMouseX, int pMouseY, int x, int y, int offsetX, int offsetY, int width, int height) {
-        return MouseUtil.isMouseOver(pMouseX, pMouseY, x + offsetX, y + offsetY, width, height);
-    }
 }
 
